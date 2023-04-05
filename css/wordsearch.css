@@ -36,8 +36,8 @@ body {
 
 	background-image: url(../theforense.png);
 	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
+	background-size: cover ;
+	background-position: center;
 	background-color: #EAF7FB;
 
 }
@@ -86,7 +86,7 @@ body {
 
 .cell:hover {
 
-	background-color: rgb(151, 141, 242);
+	background-color: rgb(154, 154, 170);
 
 }
 
@@ -98,13 +98,13 @@ body {
 
 .cell.selected { 
 
-	background-color: rgb(106, 90, 205);
+	background-color: rgb(98, 157, 245);
 
 }
 
 .cell.found {
 
-	background-color: rgb(158, 123, 158);
+	background-color: rgb(102, 231, 177);
 	border: 1px black solid;
 	font-weight: bold;
 
@@ -135,7 +135,7 @@ body {
 
 .listWord.found {
 
-	color: rgb(158, 123, 158);
+	color: rgb(0, 46, 252);
 	text-decoration: line-through;
 	
 }
