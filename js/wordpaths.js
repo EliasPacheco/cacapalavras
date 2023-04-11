@@ -1,14 +1,14 @@
 "use strict";
 
-/** the different directions/orientations a word can flow in the word grid!
+/** as diferentes direções/orientações que uma palavra pode fluir na grade de palavras!
  *
- * note: vertical - left -> right
- *		 horizontal - top > bottom
- *		 primary diagonal - upper left corner -> lower right corner
- * 		 secondary diagonal - upper right corner -> lower left corner
+ * nota: vertical - esquerda -> direita
+ * horizontal - superior > inferior
+ * diagonal primária - canto superior esquerdo -> canto inferior direito
+ * diagonal secundária - canto superior direito -> canto inferior esquerdo
  *
- * 'backwards' at the end of the string refers to it going the opposite direction (so
- *  bottom -> top or lower left -> upper right)
+ * 'para trás' no final da string refere-se a ir na direção oposta (então
+ * inferior -> superior ou inferior esquerdo -> superior direito)
  */
 var paths = { 
 

@@ -4,13 +4,13 @@
 	<head>	
 		<meta charset="utf-8">
 		<title>The Forense</title>
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
-	<body>
-		<h1>The Forense</h1>
-		<h2 id = "instructions"></h2>
-		<h3 id = "themeIntro">Tema: <span id = "wordTheme"></span></h3>
-		
-		<button id = "newGameButton" type = "button">Novo Tema</button>
+	<body class="bg-gradient-to-l from-cyan-400 to-blue-50">
+		<header class="grid justify-items-center min-h-max	">
+			<img src="LOGOtheforense.com.br.png" alt="Logo img" class="blur-none">
+		</header>
+		<button id = "newGameButton" type = "button">Embaralhar</button>
 		<div id = "wordboard"></div>
 		<div id = "wordlist"></div>
 		<button id = "solveButton" type = "button">Respostas</button>
