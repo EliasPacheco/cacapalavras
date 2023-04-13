@@ -1,53 +1,139 @@
 <!DOCTYPE html>
 
 <html>
-	<head>	
-		<meta charset="utf-8">
-		<title>The Forense</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<script src="https://cdn.tailwindcss.com"></script>
-	</head>
-	<body class="bg-gradient-to-l from-cyan-400 to-blue-50">
-		<header class="grid justify-items-center min-h-max	">
-			<img src="LOGOtheforense.com.br.png" alt="Logo img" class="blur-none">
-		</header>
-		<div id = "wordboard"></div>
-		<div id = "wordlist"></div>
-		<button id = "newGameButton" type = "button">Embaralhar</button>
 
-		<footer>
-			<div class="footer-content">
-				<h3>Redes Sociais</h3>
-				<ui class="sociais">
-					
-					<li><a target="_blank" href="https://www.instagram.com/theforense/?hl=pt-br"> <i class="fa-brands fa-instagram"></i></a></li>
-					<li><a target="_blank" href="https://www.linkedin.com/in/the-forense-seguran%C3%A7a-digital-605a7819b/"> <i class="fa-brands fa-linkedin"></i></a></li>
-					<li><a target="_blank" href="https://www.theforense.com.br/"> <i class="fa-solid fa-globe"></i></a></li>
-					<li><a target="_blank" href="https://api.whatsapp.com/send?phone=5586994994292&text=Ol%C3%A1%2C%20poderia%20me%20ajudar%3F"> <i class="fa-brands fa-whatsapp"></i></a></li>
+<head>
+	<meta charset="utf-8">
+	<title>The Forense</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
 
+<body class="bg-gradient-to-l from-cyan-300 to-blue-200">
+	<header class="grid justify-items-center min-h-max drop-shadow-2xl">
+		<img src="LOGOtheforense.com.br.png" alt="Logo img" class="blur-none">
+	</header>
+	<div id="wordboard"></div>
+	<div id="wordlist"></div>
+	<button id="newGameButton" type="button">Embaralhar</button>
 
-				</ui>
+	<footer class="border-t border-gray-200">
+		<div
+		  class="
+			container
+			flex flex-col flex-wrap
+			px-4
+			py-16
+			mx-auto
+			md:items-center
+			lg:items-start
+			md:flex-row md:flex-nowrap
+		  "
+		>
+		  <div
+			class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left"
+		  >
+			<a
+			  class="
+				flex
+				items-center
+				justify-center
+				text-4xl
+				font-bold
+				text-blue-700
+				md:justify-start
+			  "
+			>
+			  Logo
+			</a>
+			<p class="mt-2 text-sm text-gray-500">
+			 Footer dummay data Lorem..... 
+			</p>
+		  </div>
+		  <div class="justify-between w-full mt-4 text-center lg:flex">
+			<div class="w-full px-4 lg:w-1/3 md:w-1/2">
+			  <h2 class="mb-2 font-bold tracking-widest text-gray-900">
+				Useful Links
+			  </h2>
+			  <ul class="mb-8 space-y-2 text-sm list-none">
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Home</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">About Us</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Blogs</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Contact Us</a>
+				</li>
+			  </ul>
 			</div>
-			<div class="footer-bottom">
-				<p>copyright &copy;2023. designed by <span>The Forense Ltda</span></p>
+			<div class="w-full px-4 lg:w-1/3 md:w-1/2">
+			  <h2 class="mb-2 font-bold tracking-widest text-gray-900">
+				Useful Links
+			  </h2>
+			  <ul class="mb-8 space-y-2 text-sm list-none">
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Home</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">About Us</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Blogs</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Contact Us</a>
+				</li>
+			  </ul>
 			</div>
-		</footer>
+			<div class="w-full px-4 lg:w-1/3 md:w-1/2">
+			  <h2 class="mb-2 font-bold tracking-widest text-gray-900">
+				Useful Links
+			  </h2>
+			  <ul class="mb-8 space-y-2 text-sm list-none">
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Home</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">About Us</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Blogs</a>
+				</li>
+				<li>
+				  <a class="text-gray-600 hover:text-gray-800">Contact Us</a>
+				</li>
+			  </ul>
+			</div>
+		  </div>
+		</div>
+		<div class="flex justify-center">
+		  <p class="text-base text-gray-400">
+			All rights reserved by @ company 2021
+		  </p>
+		</div>
+	  </footer>
 
-		<link rel = "stylesheet" type="text/css" href = "css/wordsearch.css">
+	<link rel="stylesheet" type="text/css" href="css/wordsearch.css">
 
-		<script src = https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
+	<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
 
-		<script src = "js/wordpaths.js"></script>
-		<script src = "js/wordsearchcontroller.js"></script>
-		<script src = "js/wordsearchlogic.js"></script>
-		<script src = "js/wordsearchview.js"></script>
+	<script src="js/wordpaths.js"></script>
+	<script src="js/wordsearchcontroller.js"></script>
+	<script src="js/wordsearchlogic.js"></script>
+	<script src="js/wordsearchview.js"></script>
 
-		<script>	
-			$(document).ready( function() {
-				new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#instructions", 
-					"#wordTheme");
-			})
-		</script>
-	</body>
+	<script>
+		$(document).ready(function () {
+			new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#instructions",
+				"#wordTheme");
+		})
+	</script>
+</body>
+
 </html>

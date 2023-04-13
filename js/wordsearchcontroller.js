@@ -18,41 +18,23 @@ function WordSearchController(gameId, listId, solveId, newGameId, instructionsId
 	//an object containing various themes/words for the game
 	var searchTypes = {
 
-		"Math! (please don't run away)": [["asymptote", "differential", "algorithm", "boolean"],
-			["euclidean", "integral", "logarithm", "matrix"],
-			["riemann", "polyhedron", "theta", "vector"],
-			["binomial", "pythagoras", "eccentricity", "unit circle"],
-			["derivative",  "polar coordinates",  "tangent", "scalene"]],
+		"Math! (please don't run away)": [["protecao", "dados", "privacidade", "seguranca"],
+			["ciberseguranca", "conformidade", "lgpd", "riscos"],
+			["vulnerabilidade", "vazamento", "violacao", "titulares"],
+			["anpd", "controlador", "consentimento", "finalidade"],
+			["anonimizacao",  "pessoais",  "tratamento", "prevencao"]],
 
-		"Astronomy and Physics!": [["circumpolar", "comet", "asteroid", "declination"],
-			["earthshine", "albedo", "quantum", "olivine"], 
-			["pyroxene", "decoherence", "fermion", "quark"],
-			["gluon", "redshift", "inflaton", "planetesimal"],
-			["anthropic", "exogenesis", "atom", "planck"]],
+		"Astronomy and Physics!": [["ciberseguranca", "conformidade", "lgpd", "riscos"],
+		  	["protecao", "dados", "privacidade", "seguranca"],
+		  	["anonimizacao", "pessoais", "tratamento", "prevencao"],
+		  	["vulnerabilidade", "vazamento", "violacao", "titulares"],
+		  	["anpd", "controlador", "consentimento", "finalidade"]],
 
-		"Philosophy!": [["metaphysics", "modus ponens", "modus tollens", "analogy"],
-			["a priori", "a posteriori", "conditional", "nietzsche"],
-			["diogenes", "paradox", "occam's razor", "causality"],
-			["induction", "deduction", "ontology", "theology"],
-			["syllogism", "ethics", "karl marx", "pluralism"]],
-
-		"World Mythology :D": [["chronos", "aether", "hypnos", "psyche"],
-			["jupiter", "sol", "chaos", "pandora"],
-			["thor", "valhalla", "amaterasu", "osiris"],
-			["mazu", "izanami", "susanoo", "xipe totec"],
-			["mercury", "bastet", "sekhmet", "ptah"]],
-
-		"Shades of Purple!": [["violet", "periwinkle", "plum", "grape"],
-			["orchid", "wine", "mauve", "lavender"],
-			["lilac", "mulberry", "eggplant", "heliotrope"],
-			["liseran purple", "amethyst", "fuchsia", "pomp and power"],
-			["sangria", "boysenberry", "thistle", "heather"]],
-
-		"The Many Different Flavors of Cat!": [["Russian Blue", "Siamese", "Persian", "Sphynx"],
-			["Ragdoll", "Singapura", "Snowshoe", "Turkish Van"],
-			["Maine Coon", "Devon Rex", "Charteux", "Scottish Fold"],
-			["Himalayan", "Ragamuffin", "Bombay", "Siberian"],
-			["Egyptian Mau", "Norwegian Forest Cat", "Abyssinian", "York Chocolate"]]
+		"Philosophy!": [["anpd", "controlador", "consentimento", "finalidade"],
+		 	["protecao", "dados", "privacidade", "seguranca"],
+		 	["ciberseguranca", "conformidade", "lgpd", "riscos"],
+		 	["vulnerabilidade", "vazamento", "violacao", "titulares"],
+		 	["anonimizacao", "pessoais", "tratamento", "prevencao"]],
 
 	};
 
