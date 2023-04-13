@@ -19,105 +19,71 @@
 	<div id="wordlist"></div>
 	<button id="newGameButton" type="button">Embaralhar</button>
 
-	<footer class="border-t border-gray-200">
-		<div
-		  class="
-			container
-			flex flex-col flex-wrap
-			px-4
-			py-16
-			mx-auto
-			md:items-center
-			lg:items-start
-			md:flex-row md:flex-nowrap
-		  "
-		>
-		  <div
-			class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left"
-		  >
-			<a
-			  class="
-				flex
-				items-center
-				justify-center
-				text-4xl
-				font-bold
-				text-blue-700
-				md:justify-start
-			  "
-			>
-			  Logo
-			</a>
-			<p class="mt-2 text-sm text-gray-500">
-			 Footer dummay data Lorem..... 
-			</p>
-		  </div>
-		  <div class="justify-between w-full mt-4 text-center lg:flex">
-			<div class="w-full px-4 lg:w-1/3 md:w-1/2">
-			  <h2 class="mb-2 font-bold tracking-widest text-gray-900">
-				Useful Links
-			  </h2>
-			  <ul class="mb-8 space-y-2 text-sm list-none">
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Home</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">About Us</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Blogs</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Contact Us</a>
-				</li>
-			  </ul>
-			</div>
-			<div class="w-full px-4 lg:w-1/3 md:w-1/2">
-			  <h2 class="mb-2 font-bold tracking-widest text-gray-900">
-				Useful Links
-			  </h2>
-			  <ul class="mb-8 space-y-2 text-sm list-none">
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Home</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">About Us</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Blogs</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Contact Us</a>
-				</li>
-			  </ul>
-			</div>
-			<div class="w-full px-4 lg:w-1/3 md:w-1/2">
-			  <h2 class="mb-2 font-bold tracking-widest text-gray-900">
-				Useful Links
-			  </h2>
-			  <ul class="mb-8 space-y-2 text-sm list-none">
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Home</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">About Us</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Blogs</a>
-				</li>
-				<li>
-				  <a class="text-gray-600 hover:text-gray-800">Contact Us</a>
-				</li>
-			  </ul>
-			</div>
-		  </div>
-		</div>
-		<div class="flex justify-center">
-		  <p class="text-base text-gray-400">
-			All rights reserved by @ company 2021
-		  </p>
-		</div>
-	  </footer>
+	<!-- Swap dark-theme to light-theme for light color theme -->
+<footer id="dark-theme" class='bottom-0 left-0 flex flex-col w-full gap-8 px-8 py-16 md:gap-12'>
+	<div class='grid grid-cols-2 gap-8 2xsm:grid-cols-2 md:grid-cols-4 '>
+	  <div class='flex flex-col gap-6'>
+		<label class='text-gray-400'>SOLUTIONS</label>
+		<ul class='flex flex-col gap-6 '>
+		  <li>Marketing</li>
+		  <li>Analytics</li>
+		  <li>Commerce</li>
+		  <li>Insights</li>
+		</ul>
+	  </div>
+	  <div class='flex flex-col gap-6'>
+		<label class='text-gray-400'>SUPPORT</label>
+		<ul class='flex flex-col gap-6'>
+		  <li>Pricing</li>
+		  <li>Documentation</li>
+		  <li>Guides</li>
+		  <li>API Status</li>
+		</ul>
+	  </div>
+	  <div class='flex flex-col gap-6'>
+		<label class='text-gray-400'>COMPANY</label>
+		<ul class='flex flex-col gap-6 '>
+		  <li>About</li>
+		  <li>Blog</li>
+		  <li>Contact</li>
+		  <li>Partners</li>
+		</ul>
+	  </div>
+	  <div className='flex flex-col gap-6'>
+		<label className='text-gray-400'>SUPPORT</label>
+		<ul className='flex flex-col gap-6 '>
+		  <li>Pricing</li>
+		  <li>Documentation</li>
+		  <li>Guides</li>
+		  <li>API Status</li>
+		</ul>
+	  </div>
+	</div>
+	<div class='w-full h-px m-auto bg-gradient-to-r from-transparent via-gray-400 to-transparent'></div>
+	<div class='flex flex-col items-center gap-8 md:justify-between md:flex-row'>
+	  <div class='flex flex-col gap-2'>
+		<p class='text-gray-400'>SUBSCRIBE TO OUR NEWSLETTER</p>
+		<p class='text-gray-300'>The latest news, article, resources, sent to your inbox weekly</p>
+	  </div>
+	  <div class='flex flex-col gap-4 xsm:flex-row md:p-0'>
+		<input class='px-4 py-3 text-lg transition-all duration-300 rounded-lg focus:outline-none focus:right-1 ' placeholder='Enter your email' type="text" />
+		<button class='px-6 py-4 font-semibold bg-purple-500 rounded-lg'>Subscribe</button>
+	  </div>
+	</div>
+	<div class='w-full h-px m-auto bg-gradient-to-r from-transparent via-gray-400 to-transparent'></div>
+	<div class='flex flex-col items-center gap-6 md:flex-row md:justify-between '>
+	  <div>
+		&#169; 2022
+	  </div>
+	  <div class='flex gap-4 p-2 rounded-md social-wrapper'>
+		<img onclick="relocate('facebook.com')" src="https://img.icons8.com/material/24/000000/twitter--v2.png" alt="Facebook">
+		<img onclick="relocate('instagram.com')" src="https://img.icons8.com/material/24/000000/instagram-new--v1.png" alt="Instagram">
+		<img onclick="relocate('twitter.com')" src="https://img.icons8.com/material/24/000000/twitter--v2.png" alt="twitter ">
+		<img onclick="relocate('telegram.org')" src="https://img.icons8.com/ios-filled/24/000000/telegram-app.png" alt="telegram ">
+		<img onclick="relocate('discird.com')" src="https://img.icons8.com/material/24/000000/discord-logo--v1.png" alt="discord">
+	  </div>
+	</div>
+  </footer>
 
 	<link rel="stylesheet" type="text/css" href="css/wordsearch.css">
 
