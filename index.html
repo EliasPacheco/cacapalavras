@@ -15,8 +15,18 @@
 	<header class="grid justify-items-center min-h-max drop-shadow-2xl">
 		<img src="LOGOtheforense.com.br.png" alt="Logo img" class="blur-none">
 	</header>
+	<div>
+		<div class="sm:fixed md:fixed lg:static xl:static ">
+			<div class="popup" id="popup">
+				<h3>Sucesso!</h3>
+				<p>Parabéns por concluir nosso caça palavras. Para jogar novamente clique no botão abaixo.</p>
+				<button type="button" id="newGameButton2" onclick="closePopup()">Embaralhar</button>
+			</div>
+		</div>
+	</div>
 	<div id="wordboard"></div>
 	<div id="wordlist"></div>
+
 	<button id="newGameButton" type="button">Embaralhar</button>
 
 	<link rel="stylesheet" type="text/css" href="css/wordsearch.css">
@@ -29,13 +39,17 @@
 	<script src="js/wordsearchview.js"></script>
 
 	<script>
+		function closePopup() {
+			popup.classList.remove("open-popup");
+		}
+
 		$(document).ready(function () {
-			new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#instructions",
+			new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#newGameButton2", "#instructions",
 				"#wordTheme");
 		})
 	</script>
 
-	<footer class="md:fixed sm:fixed lg:static xl:static">
+	<footer class="sm:fixed md:fixed lg:static xl:static">
 		<div class="footer-content">
 			<h3>Redes Sociais</h3>
 			<ui class="sociais">

@@ -52,7 +52,8 @@ function WordSearchLogic(gameId,list) {
 	function createMatrix(size) {
 
 		//creates an array of length size
-		var matrix = new Array(size);
+		var matrix = 
+		 Array(size);
 
 		//sets each index inside the array to be another array of length size
 		for (var i = 0; i < size; i++) {
