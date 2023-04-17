@@ -14,16 +14,28 @@
  * @param {String} themeId ID for part of the h3 heading (to show the theme of the word search)
  */
 
-function WordSearchController(gameId, listId, solveId, newGameId, newGameId2, instructionsId, themeId) {
+function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, instructionsId, themeId) {
 
 	//an object containing various themes/words for the game
 	var searchTypes = {
 
-		"Math! (please don't run away)": [["protecao", "dados",]],
+		"Math! (please don't run away)": [["protecao", "dados", "privacidade", "seguranca"],
+			["ciberseguranca", "conformidade", "lgpd", "riscos"],
+			["vulnerabilidade", "vazamento", "violacao", "titulares"],
+			["anpd", "controlador", "consentimento", "finalidade"],
+			["anonimizacao",  "pessoais",  "tratamento", "prevencao"]],
 
-		"Astronomy and Physics!": [["ciberseguranca", "conformidade"]],
+		"Astronomy and Physics!": [["ciberseguranca", "conformidade", "lgpd", "riscos"],
+		  	["protecao", "dados", "privacidade", "seguranca"],
+		  	["anonimizacao", "pessoais", "tratamento", "prevencao"],
+		  	["vulnerabilidade", "vazamento", "violacao", "titulares"],
+		  	["anpd", "controlador", "consentimento", "finalidade"]],
 
-		"Philosophy!": [["anpd", "controlador",]],
+		"Philosophy!": [["anpd", "controlador", "consentimento", "finalidade"],
+		 	["protecao", "dados", "privacidade", "seguranca"],
+		 	["ciberseguranca", "conformidade", "lgpd", "riscos"],
+		 	["vulnerabilidade", "vazamento", "violacao", "titulares"],
+		 	["anonimizacao", "pessoais", "tratamento", "prevencao"]],
 
 	};
 
