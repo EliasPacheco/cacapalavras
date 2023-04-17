@@ -22,15 +22,11 @@
 			<button type="button" id="newGameButton2" onclick="closePopup()">Embaralhar</button>
 		</div>
 	</div>
-	<div class="flex flex-wrap">
-		<div class="w-full sm:fixed md:fixed lg:static xl:static">
-		  <div id="wordboard" class="h-64 sm:h-auto"></div>
-		</div>
-		<div class="w-full sm:fixed md:fixed lg:static xl:static">
-			<div id="wordlist" class="h-64 sm:h-auto"></div>
-		</div>
+	<div class="flex flex-col">
+		<div id="wordboard" class="h-64 sm:h-auto"></div>
+		<div id="wordlist" class="h-64 sm:h-auto"></div>
 	  </div>
-		  
+	  
 
 	<button id="newGameButton" type="button">Embaralhar</button>
 
@@ -54,7 +50,7 @@
 		})
 	</script>
 
-	<footer class="sm:fixed md:fixed lg:static xl:static">
+	<footer class="sm:fixed md:fixed lg:static xl:static 2xl:static">
 		<div class="footer-content">
 			<h3>Redes Sociais</h3>
 			<ui class="sociais">
@@ -75,6 +71,8 @@
 		</div>
 
 	</footer>
+
+	
 </body>
 
 </html>
