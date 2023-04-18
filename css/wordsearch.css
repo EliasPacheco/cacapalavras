@@ -34,7 +34,7 @@ h1, h2 {
 }
 
 body {
-
+	height:100vh;
 	background-color: #EAF7FB;
 
 }

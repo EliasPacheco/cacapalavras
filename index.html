@@ -17,68 +17,67 @@
 	</header>
 </body>
 
-	<div class="sm:static md:static lg:static xl:static ">
-		<div class="popup" id="popup">
-			<h3>Sucesso!</h3>
-			<p>Parabéns por concluir nosso caça palavras. Para jogar novamente clique no botão abaixo.</p>
-			<button type="button" id="newGameButton2" onclick="closePopup()">Embaralhar</button>
-		</div>
+<div class="sm:static md:static lg:static xl:static ">
+	<div class="popup" id="popup">
+		<h3>Sucesso!</h3>
+		<p>Parabéns por concluir nosso caça palavras. Para jogar novamente clique no botão abaixo.</p>
+		<button type="button" id="newGameButton2" onclick="closePopup()">Embaralhar</button>
 	</div>
-	<div class="flex flex-col">
-		<div id="wordboard" class="h-64 sm:h-auto"></div>
-		<div id="wordlist" class="h-64 sm:h-auto"></div>
-	  </div>
-	  
+</div>
+<div class="flex flex-col">
+	<div id="wordboard" class="h-64 sm:h-auto"></div>
+	<div id="wordlist" class="h-64 sm:h-auto"></div>
+</div>
 
-	<button type="button" class="btn" onclick="openPopup()">abrir</button>
 
-	<button id="newGameButton" type="button">Embaralhar</button>
+<button type="button" class="btn" onclick="openPopup()">abrir</button>
 
-	<link rel="stylesheet" type="text/css" href="css/wordsearch.css">
+<button id="newGameButton" type="button">Embaralhar</button>
 
-	<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
+<link rel="stylesheet" type="text/css" href="css/wordsearch.css">
 
-	<script src="js/wordpaths.js"></script>
-	<script src="js/wordsearchcontroller.js"></script>
-	<script src="js/wordsearchlogic.js"></script>
-	<script src="js/wordsearchview.js"></script>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
 
-	<script>
-		function openPopup() {
-			popup.classList.add("open-popup");
-		}
-		function closePopup() {
-			popup.classList.remove("open-popup");
-		}
+<script src="js/wordpaths.js"></script>
+<script src="js/wordsearchcontroller.js"></script>
+<script src="js/wordsearchlogic.js"></script>
+<script src="js/wordsearchview.js"></script>
 
-		$(document).ready(function () {
-			new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#newGameButton2", "#instructions",
-				"#wordTheme");
-		})
-	</script>
+<script>
+	function openPopup() {
+		popup.classList.add("open-popup");
+	}
+	function closePopup() {
+		popup.classList.remove("open-popup");
+	}
 
-	<footer class="fixed-bottom">
-		<div class="footer-content">
-			<h3>Redes Sociais</h3>
-			<ui class="sociais">
-				<li><a target="_blank" href="https://www.instagram.com/theforense/?hl=pt-br"> <i
-							class="fa-brands fa-instagram"></i></a></li>
-				<li><a target="_blank" href="https://www.linkedin.com/in/the-forense-seguran%C3%A7a-digital-605a7819b/">
-						<i class="fa-brands fa-linkedin"></i></a></li>
-				<li><a target="_blank" href="https://www.theforense.com.br/"> <i class="fa-solid fa-globe"></i></a></li>
-				<li><a target="_blank"
-						href="https://api.whatsapp.com/send?phone=5586994994292&text=Ol%C3%A1%2C%20poderia%20me%20ajudar%3F">
-						<i class="fa-brands fa-whatsapp"></i></a></li>
+	$(document).ready(function () {
+		new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#newGameButton2", "#instructions",
+			"#wordTheme");
+	})
+</script>
 
-			</ui>
-		</div>
-		<div class="footer-bottom">
-			<p class="text-center"> &copy; 2023. designed by <span>The Forense Ltda</span></p>
-		</div>
-
-	</footer>
-
-	
 </body>
+
+<footer class="fixed-bottom">
+	<div class="footer-content">
+		<h3>Redes Sociais</h3>
+		<ui class="sociais">
+			<li><a target="_blank" href="https://www.instagram.com/theforense/?hl=pt-br"> <i
+						class="fa-brands fa-instagram"></i></a></li>
+			<li><a target="_blank" href="https://www.linkedin.com/in/the-forense-seguran%C3%A7a-digital-605a7819b/">
+					<i class="fa-brands fa-linkedin"></i></a></li>
+			<li><a target="_blank" href="https://www.theforense.com.br/"> <i class="fa-solid fa-globe"></i></a></li>
+			<li><a target="_blank"
+					href="https://api.whatsapp.com/send?phone=5586994994292&text=Ol%C3%A1%2C%20poderia%20me%20ajudar%3F">
+					<i class="fa-brands fa-whatsapp"></i></a></li>
+
+		</ui>
+	</div>
+	<div class="footer-bottom">
+		<p class="text-center"> &copy; 2023. designed by <span>The Forense Ltda</span></p>
+	</div>
+
+</footer>
 
 </html>
