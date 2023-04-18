@@ -13,9 +13,11 @@
 
 <body class="bg-gradient-to-l from-cyan-300 to-blue-200">
 	<header class="grid justify-items-center min-h-max drop-shadow-2xl">
-		<img src="LOGOtheforense.com.br.png" alt="Logo img" class="blur-none">
+		<img src="LOGOtheforense.com.br.png" alt="Logo img" class="blur-none max-w-full">
 	</header>
-	<div class="sm:fixed md:fixed lg:static xl:static ">
+</body>
+
+	<div class="sm:static md:static lg:static xl:static ">
 		<div class="popup" id="popup">
 			<h3>Sucesso!</h3>
 			<p>Parabéns por concluir nosso caça palavras. Para jogar novamente clique no botão abaixo.</p>
@@ -27,6 +29,8 @@
 		<div id="wordlist" class="h-64 sm:h-auto"></div>
 	  </div>
 	  
+
+	<button type="button" class="btn" onclick="openPopup()">abrir</button>
 
 	<button id="newGameButton" type="button">Embaralhar</button>
 
@@ -40,6 +44,9 @@
 	<script src="js/wordsearchview.js"></script>
 
 	<script>
+		function openPopup() {
+			popup.classList.add("open-popup");
+		}
 		function closePopup() {
 			popup.classList.remove("open-popup");
 		}
@@ -50,11 +57,10 @@
 		})
 	</script>
 
-	<footer class="sm:fixed md:fixed lg:static xl:static 2xl:static">
+	<footer class="fixed-bottom">
 		<div class="footer-content">
 			<h3>Redes Sociais</h3>
 			<ui class="sociais">
-
 				<li><a target="_blank" href="https://www.instagram.com/theforense/?hl=pt-br"> <i
 							class="fa-brands fa-instagram"></i></a></li>
 				<li><a target="_blank" href="https://www.linkedin.com/in/the-forense-seguran%C3%A7a-digital-605a7819b/">
@@ -67,7 +73,7 @@
 			</ui>
 		</div>
 		<div class="footer-bottom">
-			<p>copyright &copy;2023. designed by <span>The Forense Ltda</span></p>
+			<p class="text-center"> &copy; 2023. designed by <span>The Forense Ltda</span></p>
 		</div>
 
 	</footer>
