@@ -17,49 +17,48 @@
 	</header>
 </body>
 
-<div class="sm:static md:static lg:static xl:static ">
-	<div class="popup" id="popup">
-		<h3>Sucesso!</h3>
-		<p>Parabéns por concluir nosso caça palavras. Para jogar novamente clique no botão abaixo.</p>
-		<button type="button" id="newGameButton2" onclick="closePopup()">Embaralhar</button>
+	<div class="sm:static md:static lg:static xl:static ">
+		<div class="popup" id="popup">
+			<h3>Sucesso!</h3>
+			<p>Parabéns por concluir nosso caça palavras. Para jogar novamente clique no botão abaixo.</p>
+			<button type="button" id="newGameButton2" onclick="closePopup()">Embaralhar</button>
+		</div>
 	</div>
-</div>
-<div class="flex flex-col">
-	<div id="wordboard" class="h-64 sm:h-auto"></div>
-	<div id="wordlist" class="h-64 sm:h-auto"></div>
-</div>
+	<div class="flex flex-col">
+		<div id="wordboard" class="h-64 sm:h-auto"></div>
+		<div id="wordlist" class="h-64 sm:h-auto"></div>
+	  </div>
+	  
 
+	<button type="button" class="btn" onclick="openPopup()">abrir</button>
 
-<button type="button" class="btn" onclick="openPopup()">abrir</button>
+	<button id="newGameButton" type="button">Embaralhar</button>
 
-<button id="newGameButton" type="button">Embaralhar</button>
+	<link rel="stylesheet" type="text/css" href="css/wordsearch.css">
 
-<link rel="stylesheet" type="text/css" href="css/wordsearch.css">
+	<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
 
-<script src=https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js></script>
+	<script src="js/wordpaths.js"></script>
+	<script src="js/wordsearchcontroller.js"></script>
+	<script src="js/wordsearchlogic.js"></script>
+	<script src="js/wordsearchview.js"></script>
 
-<script src="js/wordpaths.js"></script>
-<script src="js/wordsearchcontroller.js"></script>
-<script src="js/wordsearchlogic.js"></script>
-<script src="js/wordsearchview.js"></script>
+	<script>
+		function openPopup() {
+			popup.classList.add("open-popup");
+		}
+		function closePopup() {
+			popup.classList.remove("open-popup");
+		}
 
-<script>
-	function openPopup() {
-		popup.classList.add("open-popup");
-	}
-	function closePopup() {
-		popup.classList.remove("open-popup");
-	}
-
-	$(document).ready(function () {
-		new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#newGameButton2", "#instructions",
-			"#wordTheme");
-	})
-</script>
-
+		$(document).ready(function () {
+			new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#newGameButton2", "#instructions",
+				"#wordTheme");
+		})
+	</script>
 </body>
 
-<footer class="fixed-bottom">
+<footer class="sm:fixed md:fixed lg:static xl:static 2xl:static">
 	<div class="footer-content">
 		<h3>Redes Sociais</h3>
 		<ui class="sociais">
