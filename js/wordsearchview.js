@@ -16,10 +16,8 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 
 	"use strict";
 
-	//variable to store if the puzzle was solved by the player or by the solve button!
 	var selfSolved = true;
 
-	//object to hold oft-used class/id/attribute names!
 	var names = { 
 
 		cell: "cell",
@@ -269,10 +267,8 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		function openPopup() {
 			popup.classList.add("open-popup");
 		}
-		// Coloque aqui a lógica para verificar se o objetivo foi concluído
-		var objetivoConcluido = true; // Exemplo: assumindo que o objetivo foi concluído
+		var objetivoConcluido = true;
 	
-		// Se o objetivo for alcançado, exibir um alerta
 		if (objetivoConcluido) {
 			openPopup();
 		}
