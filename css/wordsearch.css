@@ -140,10 +140,9 @@ body {
 	border-radius: 8px;
 	font-size: 18px;
 	font-weight: bold;
-	visibility: hidden;
 
 }
-#solveButton, #newGameButton2 {
+#newGameButton2 {
 
 	background-color: rgb(25, 0, 255);
 	margin: 20px auto 20px auto;
