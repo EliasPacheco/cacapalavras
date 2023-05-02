@@ -12,6 +12,9 @@ h1, h2, #wordTheme, #solveButton, #newGameButton, .listWord {
 	padding: 5px;
 
 }
+.my-image {
+	margin-bottom: -50px;
+  }
 
 h1, h2, #wordTheme, #solveButton, #newGameButton {
 
