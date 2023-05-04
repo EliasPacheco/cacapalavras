@@ -179,86 +179,96 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		var selectedLetters = [];
 
 		var wordMade = ''; 
-
+	
 		var mouseIsDown = false;	
-
-		$(select.cells).mousedown(function() {
+	
+		$(select.cells).on("mousedown touchstart", function(event) {
 			
+			event.preventDefault(); // previne o comportamento padrão do toque
+	
 			mouseIsDown = true;
-
+	
 			$(this).addClass(names.selected);
-
+	
 			$(this).attr({id: names.pivot});
-
+	
 			highlightValidDirections($(this), matrix, names.selectable);
-
+	
 		});
-
-		$(select.cells).mouseenter(function() {  
+	
+		$(select.cells).on("mouseenter touchmove", function(event) {  
 			
+			event.preventDefault(); // previne o comportamento padrão do toque
+	
 			if (mouseIsDown && $(this).hasClass(names.selectable)) {  
-
+	
 				var currentDirection = $(this).attr(names.path);  
-
+	
 				for (var i = 0; i < selectedLetters.length; i++) {
-
+	
 					selectedLetters[i].removeClass(names.selected);
-
+	
 				}
-
+	
 				selectedLetters = [];
-
+	
 				wordMade = '';
-
+	
 				var cells = selectCellRange(select.cells, $(this), names.path, currentDirection, selectedLetters, wordMade);
-
+	
 				wordMade = cells.word;
 				selectedLetters = cells.array;
-
+	
 			}
-
+	
 		});
-
-
-		$(select.cells).mouseup(function() {
-
+	
+	
+		$(select.cells).on("mouseup touchend", function(event) {
+	
+			event.preventDefault(); // previne o comportamento padrão do toque
+	
 			endMove();
-
+	
 		});
-
-		$(gameId).mouseleave (function() {
-
+	
+		$(gameId).on("mouseleave touchcancel", function(event) {
+	
+			event.preventDefault(); // previne o comportamento padrão do toque
+	
 			if (mouseIsDown) {
-
+	
 				endMove();
-
+	
 			}	
-
+	
 		});
+	
 		function endMove() {
-
+	
 			mouseIsDown = false;
-
+	
 			if (validWordMade(list, wordMade, instructionsId)) {
-
+	
 				$(select.selected).addClass("found");
-
+	
 			}
-
+	
 			$(select.selected).removeClass(names.selected);
-
+	
 			$(select.cells).removeAttr(names.path);
-
+	
 			$(select.pivot).removeAttr("id");
-
+	
 			$(select.selectable).removeClass(names.selectable);
-
+	
 			wordMade = '';
 			selectedLetters = [];
-
-			}
-
-	}
+	
+		}
+	
+	} 
+	
 
 	function checkObjective() {
 
