@@ -174,35 +174,46 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 
 	}
 
-	 this.triggerMouseDrag = function() {	
+	this.triggerMouseDrag = function() {
 
 		var selectedLetters = [];
-
-		var wordMade = ''; 
-	
-		var mouseIsDown = false;	
+		var wordMade = '';
+		var mouseIsDown = false;
 	
 		$(select.cells).on("mousedown touchstart", function(event) {
 			
 			event.preventDefault(); // previne o comportamento padrão do toque
 	
+			// Verifica se há um toque
+			if (event.type === "touchstart") {
+				var touch = event.changedTouches[0];
+				event.pageX = touch.pageX;
+				event.pageY = touch.pageY;
+			}
+	
 			mouseIsDown = true;
 	
 			$(this).addClass(names.selected);
-	
 			$(this).attr({id: names.pivot});
 	
 			highlightValidDirections($(this), matrix, names.selectable);
 	
 		});
 	
-		$(select.cells).on("mouseenter touchmove", function(event) {  
-			
+		$(select.cells).on("mousemove touchmove", function(event) {
+	
 			event.preventDefault(); // previne o comportamento padrão do toque
 	
-			if (mouseIsDown && $(this).hasClass(names.selectable)) {  
+			// Verifica se há um toque
+			if (event.type === "touchmove") {
+				var touch = event.changedTouches[0];
+				event.pageX = touch.pageX;
+				event.pageY = touch.pageY;
+			}
 	
-				var currentDirection = $(this).attr(names.path);  
+			if (mouseIsDown && $(this).hasClass(names.selectable)) {
+	
+				var currentDirection = $(this).attr(names.path);
 	
 				for (var i = 0; i < selectedLetters.length; i++) {
 	
@@ -223,10 +234,16 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	
 		});
 	
-	
 		$(select.cells).on("mouseup touchend", function(event) {
 	
 			event.preventDefault(); // previne o comportamento padrão do toque
+	
+			// Verifica se há um toque
+			if (event.type === "touchend") {
+				var touch = event.changedTouches[0];
+				event.pageX = touch.pageX;
+				event.pageY = touch.pageY;
+			}
 	
 			endMove();
 	
@@ -235,6 +252,13 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		$(gameId).on("mouseleave touchcancel", function(event) {
 	
 			event.preventDefault(); // previne o comportamento padrão do toque
+	
+			// Verifica se há um toque
+			if (event.type === "touchcancel") {
+				var touch = event.changedTouches[0];
+				event.pageX = touch.pageX;
+				event.pageY = touch.pageY;
+			}
 	
 			if (mouseIsDown) {
 	
@@ -255,11 +279,8 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 			}
 	
 			$(select.selected).removeClass(names.selected);
-	
 			$(select.cells).removeAttr(names.path);
-	
 			$(select.pivot).removeAttr("id");
-	
 			$(select.selectable).removeClass(names.selectable);
 	
 			wordMade = '';
@@ -267,7 +288,8 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	
 		}
 	
-	} 
+	}
+	
 	
 
 	function checkObjective() {
