@@ -179,6 +179,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		var selectedLetters = [];
 		var wordMade = '';
 		var mouseIsDown = false;
+		var wordCount = 0;
 	
 		$(select.cells).on("mousedown touchstart", function(event) {
 			
@@ -275,7 +276,8 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 			if (validWordMade(list, wordMade, instructionsId)) {
 	
 				$(select.selected).addClass("found");
-	
+				wordCount++;
+    			wordCountElement.innerHTML = wordCount;
 			}
 	
 			$(select.selected).removeClass(names.selected);
@@ -285,7 +287,10 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	
 			wordMade = '';
 			selectedLetters = [];
-	
+			
+
+			wordCountElement.innerHTML = wordCount;
+
 		}
 	
 	}
@@ -295,14 +300,21 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	function checkObjective() {
 
 		let popup = document.getElementById("popup");
+		let popup2 = document.getElementById("popup2");
 
 		function openPopup() {
 			popup.classList.add("open-popup");
+		}
+		function openiPopup() {
+			popup2.classList.add("open-popup2");
 		}
 		var objetivoConcluido = true;
 	
 		if (objetivoConcluido) {
 			openPopup();
+		}
+		else{
+			openiPopup();
 		}
 	}
 
@@ -491,7 +503,6 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 			//if user solved the puzzle themselves
 			if (selfSolved) {
 				
-			
 
 				checkObjective();
 
