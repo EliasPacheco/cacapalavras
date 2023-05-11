@@ -323,16 +323,97 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		//gets the row and column of where the cell the mouse pressed on is
 		var cellRow = parseInt(selectedCell.attr(searchGrid.row));
 		var cellCol = parseInt(selectedCell.attr(searchGrid.column));
-
+	
 		//converts the global paths object into an array
 		Object.keys(paths).forEach(function(path) { //path - each property's name (e.g. 'vert', 'priDiagBack')
-
+	
 			//makes each cell in each of the paths selectable
 			makeRangeSelectable(cellRow, cellCol, matrix.length, paths[path], makeSelectable);
-
+	
 		});
-
+	
 	}
+	
+	// Function to handle touch events for selecting and dragging cells
+	function handleTouchEvents() {
+		var selectedLetters = [];
+		var wordMade = '';
+		var touchInProgress = false;
+		var wordCount = 0;
+	
+		$(select.cells).on("touchstart", function(event) {
+			event.preventDefault();
+	
+			var touch = event.changedTouches[0];
+			var target = document.elementFromPoint(touch.clientX, touch.clientY);
+	
+			if ($(target).hasClass(names.cell)) {
+				touchInProgress = true;
+	
+				$(target).addClass(names.selected);
+				$(target).attr({id: names.pivot});
+	
+				highlightValidDirections($(target), matrix, names.selectable);
+			}
+		});
+	
+		$(select.cells).on("touchmove", function(event) {
+			event.preventDefault();
+	
+			if (touchInProgress && $(this).hasClass(names.selectable)) {
+				var touch = event.changedTouches[0];
+				var target = document.elementFromPoint(touch.clientX, touch.clientY);
+	
+				if ($(target).hasClass(names.cell)) {
+					var currentDirection = $(target).attr(names.path);
+	
+					for (var i = 0; i < selectedLetters.length; i++) {
+						selectedLetters[i].removeClass(names.selected);
+					}
+	
+					selectedLetters = [];
+					wordMade = '';
+	
+					var cells = selectCellRange(select.cells, $(target), names.path, currentDirection, selectedLetters, wordMade);
+	
+					wordMade = cells.word;
+					selectedLetters = cells.array;
+				}
+			}
+		});
+	
+		$(select.cells).on("touchend", function(event) {
+			event.preventDefault();
+			touchInProgress = false;
+			endMove();
+		});
+	
+		$(gameId).on("touchcancel", function(event) {
+			event.preventDefault();
+			touchInProgress = false;
+			endMove();
+		});
+	
+		function endMove() {
+			if (validWordMade(list, wordMade, instructionsId)) {
+				$(select.selected).addClass("found");
+				wordCount++;
+				wordCountElement.innerHTML = wordCount;
+			}
+	
+			$(select.selected).removeClass(names.selected);
+			$(select.cells).removeAttr(names.path);
+			$(select.pivot).removeAttr("id");
+			$(select.selectable).removeClass(names.selectable);
+	
+			wordMade = '';
+			selectedLetters = [];
+		}
+	}
+	
+	// Call the function to handle touch events
+	handleTouchEvents();
+	
 
 	/** this functions makes a given path selectable but giving each cell in the path a 'selectable' class! 
 	 * this makes it so that the player can only select cells on specific paths (which makes selecting vertically, 
