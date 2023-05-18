@@ -79,6 +79,7 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, ins
 
 		if (isMobileDevice()) {
 			view.triggerTouchDrag();
+			alert("Caso esteja com o modo Para Computador ativado, favor desative e recarregue a página.");
 		} else {
 			view.triggerMouseDrag();
 		}
