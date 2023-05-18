@@ -94,16 +94,14 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, ins
 		view = new WordSearchView(game.getMatrix(), game.getListOfWords(), gameId, listId, instructionsId);
 		view.setUpView();
 	  
+		verificarModoComputador(); // Verifica o modo "para computador" novamente ao configurar o jogo
+
 		if (isMobileDevice()) {
-		  var isModoComputador = window.innerWidth > 1024; // Defina o valor de largura desejado para identificar dispositivos móveis
-		  if (isModoComputador) {
-			alert("O modo 'para computador' está ativado desative para ter uma melhor experiência");
-		  }
-		  view.triggerTouchDrag();
+			view.triggerTouchDrag();
 		} else {
-		  view.triggerMouseDrag();
+			view.triggerMouseDrag();
 		}
-	  }
+		}
 	  
 
 	/** converts a given 2D array of words to all uppercase
