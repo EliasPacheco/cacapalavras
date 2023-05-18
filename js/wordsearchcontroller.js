@@ -52,6 +52,10 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, ins
 	/** randomly chooses a word theme and sets up the game matrix and the game 
 	 * view to reflect that theme
 	 */
+	function isMobileDevice() {
+		return /Mobi/i.test(navigator.userAgent);
+	}
+
 	function setUpWordSearch() {
 
 		//generates a random theme 
@@ -72,8 +76,12 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, ins
 		//generates the view of the game and sets up mouse events for clicking and dragging
 		view = new WordSearchView(game.getMatrix(), game.getListOfWords(), gameId, listId, instructionsId);
 		view.setUpView();
-		view.triggerMouseDrag();
 
+		if (isMobileDevice()) {
+			view.triggerTouchDrag();
+		} else {
+			view.triggerMouseDrag();
+		}
 	}
 
 	/** converts a given 2D array of words to all uppercase
