@@ -53,7 +53,7 @@
 	<script>
 		var wordCountElement = document.getElementById("wordCount");
 		var countdownDiv = document.getElementById("countdown");
-		var countdownTime = 1200;
+		var countdownTime = 900;
 		var countdownInterval = setInterval(function () {
 			var minutes = Math.floor(countdownTime / 60);
 			var seconds = countdownTime % 60;
@@ -72,8 +72,8 @@
 		function closeiPopup() {
 			popup2.classList.remove("open-popup2");
 			clearInterval(countdownInterval);
-			countdownDiv.innerHTML = "Tempo restante: 20:00";
-			countdownTime = 1200;
+			countdownDiv.innerHTML = "Tempo restante: 15:00";
+			countdownTime = 900;
 			countdownInterval = setInterval(function () {
 				var minutes = Math.floor(countdownTime / 60);
 				var seconds = countdownTime % 60;
