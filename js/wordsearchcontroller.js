@@ -52,29 +52,57 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, ins
 	/** randomly chooses a word theme and sets up the game matrix and the game 
 	 * view to reflect that theme
 	 */
-	function setUpWordSearch() {
 
-		//generates a random theme 
-		var searchTypesArray = Object.keys(searchTypes); //converts theme object to array
-		var randIndex = Math.floor(Math.random()*searchTypesArray.length); //generates random number/index
-		var listOfWords = searchTypes[searchTypesArray[randIndex]]; //retrieves the matrix of words from random index
-
-		//converts letters to uppercase
-		convertToUpperCase(listOfWords); 
-
-		//sets the headings to reflect the instructions and themes
+	function verificarModoComputador() {
+		var isMobile = isMobileDevice();
+		if (isMobile) {
+		  var isModoComputador = window.innerWidth > 1024; // Defina o valor de largura desejado para identificar dispositivos móveis
+		  if (isModoComputador) {
+			alert("O modo 'para computador' está ativado desative para ter uma melhor experiência!");
+		  }
+		}
+	  }
+	  
+	  // Verifica se o dispositivo é móvel
+	  function isMobileDevice() {
+		return /Mobi/i.test(navigator.userAgent);
+	  }
+	  
+	  // Chama a função para verificar o modo na inicialização
+	  verificarModoComputador();
+	  
+	  // Chama a função novamente quando a janela for redimensionada
+	  window.addEventListener('resize', verificarModoComputador);
+	  
+	  function setUpWordSearch() {
+		// gera um tema aleatório
+		var searchTypesArray = Object.keys(searchTypes); // converte o objeto de temas em um array
+		var randIndex = Math.floor(Math.random() * searchTypesArray.length); // gera um número/índice aleatório
+		var listOfWords = searchTypes[searchTypesArray[randIndex]]; // recupera a matriz de palavras a partir do índice aleatório
+	  
+		// converte as letras para maiúsculas
+		convertToUpperCase(listOfWords);
+	  
+		// define os cabeçalhos para refletir as instruções e temas
 		updateHeadings(mainInstructions, searchTypesArray[randIndex]);
-
-		//runs the logic of the game using a close of the word list (to avoid the actual object being altered)
+	  
+		// executa a lógica do jogo usando uma cópia da lista de palavras (para evitar alterações no objeto real)
 		game = new WordSearchLogic(gameId, listOfWords.slice());
 		game.setUpGame();
-
-		//generates the view of the game and sets up mouse events for clicking and dragging
+	  
+		// gera a visualização do jogo e configura os eventos do mouse para clique e arraste
 		view = new WordSearchView(game.getMatrix(), game.getListOfWords(), gameId, listId, instructionsId);
 		view.setUpView();
-		view.triggerMouseDrag();
+	  
+		verificarModoComputador(); // Verifica o modo "para computador" novamente ao configurar o jogo
 
-	}
+		if (isMobileDevice()) {
+			view.triggerTouchDrag();
+		} else {
+			view.triggerMouseDrag();
+		}
+		}
+	  
 
 	/** converts a given 2D array of words to all uppercase
 	 *

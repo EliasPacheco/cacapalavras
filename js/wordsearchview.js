@@ -173,6 +173,75 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		});
 
 	}
+	this.triggerTouchDrag = function() {
+		var selectedLetters = [];
+		var wordMade = '';
+		var wordCount = 0;
+	
+		$(select.cells).on("touchstart", function(event) {
+			event.preventDefault();
+			var touch = event.originalEvent.touches[0];
+			var hoveredCell = $(this);
+			var pathAttr = names.path;
+			var path = hoveredCell.attr(names.path);
+	
+			selectedLetters = [];
+			wordMade = '';
+	
+			$(this).addClass(names.selected);
+			$(this).attr({ id: names.pivot });
+	
+			highlightValidDirections(hoveredCell, matrix, names.selectable);
+	
+			$(select.cells).on("touchmove", function(event) {
+				event.preventDefault();
+				var touch = event.originalEvent.touches[0];
+				var currentCell = document.elementFromPoint(touch.clientX, touch.clientY);
+				var currentDirection = $(currentCell).attr(names.path);
+	
+				if (currentCell && $(currentCell).hasClass(names.selectable)) {
+					for (var i = 0; i < selectedLetters.length; i++) {
+						selectedLetters[i].removeClass(names.selected);
+					}
+	
+					selectedLetters = [];
+					wordMade = '';
+	
+					var cells = selectCellRange(select.cells, $(currentCell), names.path, currentDirection, selectedLetters, wordMade);
+	
+					wordMade = cells.word;
+					selectedLetters = cells.array;
+				}
+			});
+	
+			$(select.cells).on("touchend", function(event) {
+				event.preventDefault();
+				endMove();
+			});
+	
+			$(gameId).on("touchcancel", function(event) {
+				event.preventDefault();
+				endMove();
+			});
+		});
+	
+		function endMove() {
+			if (validWordMade(list, wordMade, instructionsId)) {
+				$(select.selected).addClass("found");
+				wordCount++;
+				wordCountElement.innerHTML = wordCount;
+			}
+	
+			$(select.selected).removeClass(names.selected);
+			$(select.cells).removeAttr(names.path);
+			$(select.pivot).removeAttr("id");
+			$(select.selectable).removeClass(names.selectable);
+	
+			wordMade = '';
+			selectedLetters = [];
+		}
+	};
+	
 
 	this.triggerMouseDrag = function() {
 
@@ -319,20 +388,18 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	}
 
 	function highlightValidDirections(selectedCell, matrix, makeSelectable) {
-
-		//gets the row and column of where the cell the mouse pressed on is
 		var cellRow = parseInt(selectedCell.attr(searchGrid.row));
 		var cellCol = parseInt(selectedCell.attr(searchGrid.column));
-
-		//converts the global paths object into an array
-		Object.keys(paths).forEach(function(path) { //path - each property's name (e.g. 'vert', 'priDiagBack')
-
-			//makes each cell in each of the paths selectable
-			makeRangeSelectable(cellRow, cellCol, matrix.length, paths[path], makeSelectable);
-
+	
+		// Define as direções válidas com base nos caminhos disponíveis
+		var validDirections = Object.values(paths);
+	
+		// Percorre as direções válidas
+		validDirections.forEach(function(direction) {
+			makeRangeSelectable(cellRow, cellCol, matrix.length, direction, makeSelectable);
 		});
-
 	}
+	
 
 	/** this functions makes a given path selectable but giving each cell in the path a 'selectable' class! 
 	 * this makes it so that the player can only select cells on specific paths (which makes selecting vertically, 
@@ -369,59 +436,45 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	 * @return returns an object containing: the word constructed and the array of selected DOM cells!
 	 */
 	function selectCellRange(cellsSelector, hoveredCell, pathAttr, path, selectedCells, wordConstructed) {
-
-		//variable to hold index of cell hovered on
 		var hoverIndex;
-
-		//variable to hold index of pivot
-		var pivotIndex;  
-
-		//selector for cells in the particular path the mouse is on
+		var pivotIndex;
 		var cellRange = cellsSelector + "[" + pathAttr + " =" + path + "]";
-
-		//setting indices depending on how the paths flow
-		switch(path) {
-
+	
+		switch (path) {
 			case paths.vert:
 			case paths.horizon:
-			case paths.priDiag: 
-			case paths.secDiag:				
-
-				//hoverIndex > pivotIndex 
-				hoverIndex = hoveredCell.index(cellRange)+1;
+			case paths.priDiag:
+			case paths.secDiag:
+				hoverIndex = hoveredCell.index(cellRange) + 1;
 				pivotIndex = 0;
-
-				//sets up wordConstructed with the pivot's letter (to start it off)
 				wordConstructed = $(select.pivot).text();
-
-				//using the pivot text, selects cells and adds their text to wordConstructed
 				wordConstructed = selectLetters(selectedCells, wordConstructed, cellRange, pivotIndex, hoverIndex);
-				
-
 				break;
-			
-			case paths.vertBack:   
+	
+			case paths.vertBack:
 			case paths.horizonBack:
 			case paths.priDiagBack:
 			case paths.secDiagBack:
-
-				//hoverIndex < pivotIndex
 				hoverIndex = hoveredCell.index(cellRange);
 				pivotIndex = $(cellRange).length;
-
-				//selects range of cells between the pivot and the cell the mouse is on
-			 	wordConstructed += selectLetters(selectedCells, wordConstructed, cellRange, hoverIndex, pivotIndex);
-
-			 	//adds pivot text to the end
+				wordConstructed += selectLetters(selectedCells, wordConstructed, cellRange, hoverIndex, pivotIndex);
 				wordConstructed += $(select.pivot).text();
-
 				break;
-
 		}
-
-		return {word: wordConstructed, array: selectedCells};
-		
+	
+		return { word: wordConstructed, array: selectedCells };
 	}
+	
+	function selectLetters(selectedCells, wordConstructed, range, lowerIndex, upperIndex) {
+		$(range).slice(lowerIndex, upperIndex).each(function() {
+			$(this).addClass(names.selected);
+			selectedCells.push($(this));
+			wordConstructed += $(this).text();
+		});
+	
+		return wordConstructed;
+	}
+	
 
 	/** this function selects the range of cells between the pivot cell and the
 	 * the cell the mouse is hovered, and adds their text to the constructed word's string
