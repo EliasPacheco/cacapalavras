@@ -136,11 +136,11 @@ body {
 
 #solveButton, #newGameButton {
 
-	background-color: rgb(199, 226, 201);
+	background-color: rgb(25, 0, 255);
 	margin: 20px auto 20px auto;
 	display: block;
 	outline: 0;
-	border-radius: 8px;
+	border-radius: 15px;
 	font-size: 18px;
 	font-weight: bold;
 
