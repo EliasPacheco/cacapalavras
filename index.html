@@ -3,9 +3,9 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<title>Caça Palavras</title>
-	<link rel="icon" type="image/png" href="iconei.png"/>
+	<link rel="icon" type="image/png" href="iconei.png" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,10 +30,12 @@
 			<button type="button" id="newGameButton" onclick="closeiPopup()">Jogar Novamente</button>
 		</div>
 	</div>
-	<div class="flex flex-wrap lg:gap-x-[60px] lg:flex-row px-[50px] gap-y-[40px] w-full justify-center items-center p-20">
+	<div
+		class="flex flex-wrap lg:gap-x-[60px] lg:flex-row px-[50px] gap-y-[40px] w-full justify-center items-center p-20">
 		<div id="wordboard" class="h-64 sm:h-auto"></div>
 		<div id="wordlist" class="h-64 sm:h-auto"></div>
-		<div id="countdown" class="flex justify-center items-center w-full py-4 text-4xl font-bold text-center mt-4 "></div>
+		<div id="countdown" class="flex justify-center items-center w-full py-4 text-4xl font-bold text-center mt-4 ">
+		</div>
 		<div id="wordCount" style="display: none;"></div>
 
 	</div>
@@ -48,6 +50,29 @@
 	<script src="js/wordsearchview.js"></script>
 
 	<script>
+		(function () {
+			function disableTranslation() {
+				if (typeof navigator !== 'undefined' && navigator.userAgent) {
+					var userAgent = navigator.userAgent.toLowerCase();
+					if (
+						userAgent.indexOf('chrome') > -1 ||
+						userAgent.indexOf('firefox') > -1 ||
+						userAgent.indexOf('safari') > -1 ||
+						userAgent.indexOf('edg') > -1 ||
+						userAgent.indexOf('opr') > -1
+					) {
+						if (typeof document !== 'undefined' && document.documentElement) {
+							document.documentElement.setAttribute('translate', 'no');
+						}
+					}
+				}
+			}
+
+			// Chamando a função para desabilitar a tradução automática quando a página for carregada
+			window.addEventListener('DOMContentLoaded', disableTranslation);
+		})();
+
+
 		var wordCountElement = document.getElementById("wordCount");
 		var countdownDiv = document.getElementById("countdown");
 		var countdownTime = 900;
@@ -95,7 +120,7 @@
 				var seconds = countdownTime % 60;
 				countdownDiv.innerHTML = "Tempo restante: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 				countdownTime--;
-				
+
 			}, 1000);
 		}
 

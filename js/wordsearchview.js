@@ -381,7 +381,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	
 		if (objetivoConcluido) {
 			clearInterval(countdownInterval);
-			countdownDiv.innerHTML = "<span style='color: blue; font-family: Arial;'>Parabéns por concluir nosso caça palavras!" + wordCountElement.innerHTML + "</span>";
+			countdownDiv.innerHTML = "<span style='color: blue; font-family: Arial;'>Parabéns por concluir nosso caça palavras!" +"</span>";
 			openPopup();
 		}
 		else{
