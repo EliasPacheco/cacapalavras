@@ -20,23 +20,35 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2,newG
 	//an object containing various themes/words for the game
 	var searchTypes = {
 
-		"Math! (please don't run away)": [["protecao", "dados", "privacidade", "seguranca"],
-			["ciberseguranca", "conformidade", "lgpd", "riscos"],
+		"LGPD": [["protecao", "dados", "privacidade", "seguranca"],
+			["cnpd", "conformidade", "lgpd", "riscos"],
 			["vulnerabilidade", "vazamento", "violacao", "titulares"],
 			["anpd", "controlador", "consentimento", "finalidade"],
 			["anonimizacao",  "pessoais",  "tratamento", "prevencao"]],
 
-		"Astronomy and Physics!": [["ciberseguranca", "conformidade", "lgpd", "riscos"],
-		  	["protecao", "dados", "privacidade", "seguranca"],
-		  	["anonimizacao", "pessoais", "tratamento", "prevencao"],
-		  	["vulnerabilidade", "vazamento", "violacao", "titulares"],
-		  	["anpd", "controlador", "consentimento", "finalidade"]],
+		"Segurança": [["protecao", "prevencao", "ransomware", "confidencialidade"],
+		  	["integridade", "disponibilidade", "risco", "ameaca"],
+		  	["vulnerabilidade", "firewall", "antivirus", "criptografia"],
+		  	["autenticacao", "monitoramento", "seguranca", "politicas"],
+		  	["informacao", "incidentes", "treinamento", "privacidade"]],
 
-		"Philosophy!": [["anpd", "controlador", "consentimento", "finalidade"],
-		 	["protecao", "dados", "privacidade", "seguranca"],
-		 	["ciberseguranca", "conformidade", "lgpd", "riscos"],
-		 	["vulnerabilidade", "vazamento", "violacao", "titulares"],
-		 	["anonimizacao", "pessoais", "tratamento", "prevencao"]],
+		"Conformidade": [["regulamentos", "normas", "politicas", "procedimentos"],
+		 	["auditoria", "padroes", "diretrizes", "requisitos"],
+		 	["monitoramento", "avaliacao", "riscos", "certificacoes"],
+		 	["conformidade", "regulatoria", "etica", "seguranca"],
+		 	["documentacao", "responsabilidade", "corporativa", "acordo"]],
+
+		"ISO 27001": [["seguranca", "informacao", "norma", "certificacao"],
+		 	["controles", "riscos", "analise", "politica"],
+		 	["gestao", "ativos", "classificacao", "acesso"],
+		 	["criptografia", "consientizacao", "continuidade", "negocios"],
+		 	["gerenciamento", "incidentes", "revisao", "compliance"]],
+		
+		"ANPD": [["autoridade", "dados", "lgpd", "privacidade"],
+		 	["consentimento", "atividades", "pessoais", "controlador"],
+		 	["operador", "encarregado", "protecao", "tratamento"],
+		 	["adequacao", "responsabilidade", "conformidade", "sancoes"],
+		 	["vazamento", "relatorio", "transferencia", "fiscalizacao"]],
 
 	};
 

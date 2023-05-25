@@ -30,7 +30,7 @@ h1, h2, .cell, #wordTheme, #wordlist {
 }
 
 h1, h2 {
-
+	visibility: hidden;
 	margin: 10px auto 10px auto;
 	display: table;
 
