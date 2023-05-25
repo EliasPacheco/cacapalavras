@@ -157,6 +157,18 @@ body {
 
 }
 
+#newGameButton3 {
+
+	background-color: rgb(25, 0, 255);
+	margin: 20px auto 20px auto;
+	display: block;
+	outline: 0;
+	border-radius: 15px;
+	font-size: 18px;
+	font-weight: bold;
+
+}
+
 @font-face {
 
 	font-family: "Moon";
@@ -325,6 +337,48 @@ footer{
 }
 
 .popup2 button{
+	width: 100%;
+	margin-top: 50px;
+	padding: 10px 0;
+	background: #6fd649;
+	color: #fff;
+	border: 0;
+	outline: none;
+	font-size: 18px;
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup3{
+	width: 400px;
+	background: black;
+	border-radius: 6px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.1);
+	text-align: center;
+	padding: 0 30px 30px;
+	color: white;
+	visibility: hidden;
+	transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup3{
+	visibility: visible;
+	top: 50% ;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+
+.popup3 h3{
+	font-size: 38px;
+	font-weight: 500;
+	margin: 30px 0 10px;
+}
+
+.popup3 button{
 	width: 100%;
 	margin-top: 50px;
 	padding: 10px 0;

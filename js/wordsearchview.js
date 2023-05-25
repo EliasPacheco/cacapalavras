@@ -18,7 +18,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 
 	var selfSolved = true;
 
-	var names = { 
+	var names = {
 
 		cell: "cell",
 		pivot: "pivot",
@@ -27,9 +27,9 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		path: "path"
 
 	};
- 	
- 	//object to hold oft-used class/id selectors 
-	var select = {  
+
+	//object to hold oft-used class/id selectors 
+	var select = {
 
 		cells: "." + names.cell,
 		pivot: "#" + names.pivot,
@@ -48,7 +48,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	/* creates the word search puzzle grid and the table containing the list
 	 * of words to find
 	 */
-	 this.setUpView = function() {
+	this.setUpView = function () {
 
 		createSearchGrid(matrix, names.cell, searchGrid.row, searchGrid.column, gameId);
 		createListOfWords(list, listId);
@@ -76,19 +76,20 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 
 			//creates a div for the table row and gives it a row class
 			var row = $("<div/>");
-			row.attr({class: "boardRow"});  //only really used once, so it's not in a variable
+			row.attr({ class: "boardRow" });  //only really used once, so it's not in a variable
 
 			//loops through columns
 			for (var j = 0; j < matrix[i].length; j++) {
 
 				//each letter in the row is a button element
 				var letter = $("<button/>");  //i hearbuttons are preferred for clickable actions
-				
+
 				//the letter is given a cell class, and given row and column attributes!
 				letter.attr({
-					class: cellName, 
-					[rowAttr]: i, 
-					[colAttr]: j}).text(matrix[i][j]); //sets text of button to the respective matrix index
+					class: cellName,
+					[rowAttr]: i,
+					[colAttr]: j
+				}).text(matrix[i][j]); //sets text of button to the respective matrix index
 
 				//adds letter to the larger row element
 				letter.appendTo(row);
@@ -115,7 +116,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 
 			//creates a div for the row
 			var row = $("<div/>");
-			row.attr({class: "listRow"}); //gives the rows a list row class
+			row.attr({ class: "listRow" }); //gives the rows a list row class
 
 			//loops through columns
 			for (var j = 0; j < wordList[i].length; j++) {
@@ -124,7 +125,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 				var word = $("<li/>");
 
 				//they're given a list word class, and an attribute containing it's trimmed text (as in the puzzle)
-				word.attr({class: "listWord", text: wordList[i][j].replace(/\W/g, "")});
+				word.attr({ class: "listWord", text: wordList[i][j].replace(/\W/g, "") });
 
 				//given text from it's respected list index
 				word.text(wordList[i][j]);
@@ -146,14 +147,14 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	 * @param {Object} loc an object containing the locations of all the words to find in the puzzle!
 	 * @param {Array[]} matrix the grid in which the words are placed in!
 	 */
-	this.solve = function(wordLoc, matrix) {
+	this.solve = function (wordLoc, matrix) {
 
 		/** converts the object into an array and loops through each index to find 
 		 * the word with the coordinates/orientation properties, setting the words to found!
 		 *
 		 * @param {String} word - the (trimmed) word placed in the puzzle
 		 */
-		Object.keys(wordLoc).forEach(function(word) {  	
+		Object.keys(wordLoc).forEach(function (word) {
 
 			var p = wordLoc[word].p;
 
@@ -162,209 +163,209 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 
 			for (var k = 0, x = startX, y = startY; k < word.length; k++, x = incr[p](x, y).x, y = incr[p](x, y).y) {
 
-				$(select.cells + "[row = " + x + "][column = " + y + "]").addClass("found");	
+				$(select.cells + "[row = " + x + "][column = " + y + "]").addClass("found");
 
 			}
 
 			selfSolved = false;
 
-			validWordMade(list, word, instructionsId);	
-	
+			validWordMade(list, word, instructionsId);
+
 		});
 
 	}
-	this.triggerTouchDrag = function() {
+	this.triggerTouchDrag = function () {
 		var selectedLetters = [];
 		var wordMade = '';
 		var wordCount = 0;
-	
-		$(select.cells).on("touchstart", function(event) {
+
+		$(select.cells).on("touchstart", function (event) {
 			event.preventDefault();
 			var touch = event.originalEvent.touches[0];
 			var hoveredCell = $(this);
 			var pathAttr = names.path;
 			var path = hoveredCell.attr(names.path);
-	
+
 			selectedLetters = [];
 			wordMade = '';
-	
+
 			$(this).addClass(names.selected);
 			$(this).attr({ id: names.pivot });
-	
+
 			highlightValidDirections(hoveredCell, matrix, names.selectable);
-	
-			$(select.cells).on("touchmove", function(event) {
+
+			$(select.cells).on("touchmove", function (event) {
 				event.preventDefault();
 				var touch = event.originalEvent.touches[0];
 				var currentCell = document.elementFromPoint(touch.clientX, touch.clientY);
 				var currentDirection = $(currentCell).attr(names.path);
-	
+
 				if (currentCell && $(currentCell).hasClass(names.selectable)) {
 					for (var i = 0; i < selectedLetters.length; i++) {
 						selectedLetters[i].removeClass(names.selected);
 					}
-	
+
 					selectedLetters = [];
 					wordMade = '';
-	
+
 					var cells = selectCellRange(select.cells, $(currentCell), names.path, currentDirection, selectedLetters, wordMade);
-	
+
 					wordMade = cells.word;
 					selectedLetters = cells.array;
 				}
 			});
-	
-			$(select.cells).on("touchend", function(event) {
+
+			$(select.cells).on("touchend", function (event) {
 				event.preventDefault();
 				endMove();
 			});
-	
-			$(gameId).on("touchcancel", function(event) {
+
+			$(gameId).on("touchcancel", function (event) {
 				event.preventDefault();
 				endMove();
 			});
 		});
-	
+
 		function endMove() {
 			if (validWordMade(list, wordMade, instructionsId)) {
 				$(select.selected).addClass("found");
 				wordCount++;
 				wordCountElement.innerHTML = wordCount;
 			}
-	
+
 			$(select.selected).removeClass(names.selected);
 			$(select.cells).removeAttr(names.path);
 			$(select.pivot).removeAttr("id");
 			$(select.selectable).removeClass(names.selectable);
-	
+
 			wordMade = '';
 			selectedLetters = [];
 		}
 	};
-	
 
-	this.triggerMouseDrag = function() {
+
+	this.triggerMouseDrag = function () {
 
 		var selectedLetters = [];
 		var wordMade = '';
 		var mouseIsDown = false;
 		var wordCount = 0;
-	
-		$(select.cells).on("mousedown touchstart", function(event) {
-			
+
+		$(select.cells).on("mousedown touchstart", function (event) {
+
 			event.preventDefault(); // previne o comportamento padrão do toque
-	
+
 			// Verifica se há um toque
 			if (event.type === "touchstart") {
 				var touch = event.changedTouches[0];
 				event.pageX = touch.pageX;
 				event.pageY = touch.pageY;
 			}
-	
+
 			mouseIsDown = true;
-	
+
 			$(this).addClass(names.selected);
-			$(this).attr({id: names.pivot});
-	
+			$(this).attr({ id: names.pivot });
+
 			highlightValidDirections($(this), matrix, names.selectable);
-	
+
 		});
-	
-		$(select.cells).on("mousemove touchmove", function(event) {
-	
+
+		$(select.cells).on("mousemove touchmove", function (event) {
+
 			event.preventDefault(); // previne o comportamento padrão do toque
-	
+
 			// Verifica se há um toque
 			if (event.type === "touchmove") {
 				var touch = event.changedTouches[0];
 				event.pageX = touch.pageX;
 				event.pageY = touch.pageY;
 			}
-	
+
 			if (mouseIsDown && $(this).hasClass(names.selectable)) {
-	
+
 				var currentDirection = $(this).attr(names.path);
-	
+
 				for (var i = 0; i < selectedLetters.length; i++) {
-	
+
 					selectedLetters[i].removeClass(names.selected);
-	
+
 				}
-	
+
 				selectedLetters = [];
-	
+
 				wordMade = '';
-	
+
 				var cells = selectCellRange(select.cells, $(this), names.path, currentDirection, selectedLetters, wordMade);
-	
+
 				wordMade = cells.word;
 				selectedLetters = cells.array;
-	
+
 			}
-	
+
 		});
-	
-		$(select.cells).on("mouseup touchend", function(event) {
-	
+
+		$(select.cells).on("mouseup touchend", function (event) {
+
 			event.preventDefault(); // previne o comportamento padrão do toque
-	
+
 			// Verifica se há um toque
 			if (event.type === "touchend") {
 				var touch = event.changedTouches[0];
 				event.pageX = touch.pageX;
 				event.pageY = touch.pageY;
 			}
-	
+
 			endMove();
-	
+
 		});
-	
-		$(gameId).on("mouseleave touchcancel", function(event) {
-	
+
+		$(gameId).on("mouseleave touchcancel", function (event) {
+
 			event.preventDefault(); // previne o comportamento padrão do toque
-	
+
 			// Verifica se há um toque
 			if (event.type === "touchcancel") {
 				var touch = event.changedTouches[0];
 				event.pageX = touch.pageX;
 				event.pageY = touch.pageY;
 			}
-	
+
 			if (mouseIsDown) {
-	
+
 				endMove();
-	
-			}	
-	
+
+			}
+
 		});
-	
+
 		function endMove() {
-	
+
 			mouseIsDown = false;
-	
+
 			if (validWordMade(list, wordMade, instructionsId)) {
-	
+
 				$(select.selected).addClass("found");
 				wordCount++;
-    			wordCountElement.innerHTML = wordCount;
+				wordCountElement.innerHTML = wordCount;
 			}
-	
+
 			$(select.selected).removeClass(names.selected);
 			$(select.cells).removeAttr(names.path);
 			$(select.pivot).removeAttr("id");
 			$(select.selectable).removeClass(names.selectable);
-	
+
 			wordMade = '';
 			selectedLetters = [];
-			
+
 
 			wordCountElement.innerHTML = wordCount;
 
 		}
-	
+
 	}
-	
-	
+
+
 
 	function checkObjective() {
 
@@ -378,13 +379,13 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 			popup2.classList.add("open-popup2");
 		}
 		var objetivoConcluido = true;
-	
+
 		if (objetivoConcluido) {
 			clearInterval(countdownInterval);
-			countdownDiv.innerHTML = "<span style='color: blue; font-family: Arial;'>Parabéns por concluir nosso caça palavras!" +"</span>";
+			countdownDiv.innerHTML = "<span style='color: blue; font-family: Arial;'>Parabéns por concluir nosso caça palavras!" + "</span>";
 			openPopup();
 		}
-		else{
+		else {
 			openiPopup();
 		}
 	}
@@ -392,16 +393,16 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	function highlightValidDirections(selectedCell, matrix, makeSelectable) {
 		var cellRow = parseInt(selectedCell.attr(searchGrid.row));
 		var cellCol = parseInt(selectedCell.attr(searchGrid.column));
-	
+
 		// Define as direções válidas com base nos caminhos disponíveis
 		var validDirections = Object.values(paths);
-	
+
 		// Percorre as direções válidas
-		validDirections.forEach(function(direction) {
+		validDirections.forEach(function (direction) {
 			makeRangeSelectable(cellRow, cellCol, matrix.length, direction, makeSelectable);
 		});
 	}
-	
+
 
 	/** this functions makes a given path selectable but giving each cell in the path a 'selectable' class! 
 	 * this makes it so that the player can only select cells on specific paths (which makes selecting vertically, 
@@ -413,14 +414,14 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	 * @param {String} p
 	 * @param {String} selectable 
 	 */
-	function makeRangeSelectable(x, y, l, p, selectable) {  
-		for (var i = incr[p](x, y).x, j = incr[p](x, y).y; 
-			bounds[p](i, j, l);  							
-			i = incr[p](i, j).x, j=incr[p](i, j).y) {	
+	function makeRangeSelectable(x, y, l, p, selectable) {
+		for (var i = incr[p](x, y).x, j = incr[p](x, y).y;
+			bounds[p](i, j, l);
+			i = incr[p](i, j).x, j = incr[p](i, j).y) {
 
 			$("[" + searchGrid.row + "= " + i + "][" + searchGrid.column + "= " + j + "]")
-				.addClass(selectable) 
-				.attr({[names.path]: p});
+				.addClass(selectable)
+				.attr({ [names.path]: p });
 		}
 
 	}
@@ -441,7 +442,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		var hoverIndex;
 		var pivotIndex;
 		var cellRange = cellsSelector + "[" + pathAttr + " =" + path + "]";
-	
+
 		switch (path) {
 			case paths.vert:
 			case paths.horizon:
@@ -452,7 +453,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 				wordConstructed = $(select.pivot).text();
 				wordConstructed = selectLetters(selectedCells, wordConstructed, cellRange, pivotIndex, hoverIndex);
 				break;
-	
+
 			case paths.vertBack:
 			case paths.horizonBack:
 			case paths.priDiagBack:
@@ -463,20 +464,20 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 				wordConstructed += $(select.pivot).text();
 				break;
 		}
-	
+
 		return { word: wordConstructed, array: selectedCells };
 	}
-	
+
 	function selectLetters(selectedCells, wordConstructed, range, lowerIndex, upperIndex) {
-		$(range).slice(lowerIndex, upperIndex).each(function() {
+		$(range).slice(lowerIndex, upperIndex).each(function () {
 			$(this).addClass(names.selected);
 			selectedCells.push($(this));
 			wordConstructed += $(this).text();
 		});
-	
+
 		return wordConstructed;
 	}
-	
+
 
 	/** this function selects the range of cells between the pivot cell and the
 	 * the cell the mouse is hovered, and adds their text to the constructed word's string
@@ -491,7 +492,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	function selectLetters(selectedCells, wordConstructed, range, lowerIndex, upperIndex) {
 
 		//only goes through the the range between the pivot and wherever the mouse is on the path!
-		$(range).slice(lowerIndex, upperIndex).each(function() {
+		$(range).slice(lowerIndex, upperIndex).each(function () {
 
 			//selects the cell
 			$(this).addClass(names.selected);
@@ -507,7 +508,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 		return wordConstructed;
 
 	}
-	
+
 	/** checks if the word a user made after a move is an actual word to find, and 
 	 * if so, sets the word as found! otherwise, nothing happens (so the move is 
 	 * essentially ignored)
@@ -517,7 +518,7 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	 * @param {String} instructionsId - selector for the h2 heading
 	 * @return true if the word made is a word in the list
 	 */
-	function validWordMade (list, wordToCheck, instructionsId) {
+	function validWordMade(list, wordToCheck, instructionsId) {
 
 		for (var i = 0; i < list.length; i++) {
 
@@ -527,20 +528,20 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 
 				if (wordToCheck == trimmedWord ||
 					wordToCheck == reversedWord(trimmedWord)) {
-					
+
 					$(".listWord[text = " + trimmedWord + "]").addClass("found");
 
 					checkPuzzleSolved(".listWord", ".listWord.found", instructionsId);
-					
+
 					return true;
-									
+
 				}
 
 			}
 
 		}
 
-	}	
+	}
 
 	/** checks if all the words in the puzzle have been found, what method was used to 
 	 * solve the puzzle, and updates the h2 instructions heading accordingly
@@ -550,14 +551,14 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 	 * @param {String} instructionsId - selector for h2 instructions heading
 	 * @return true if the entire word search has been solved
 	 */
-	function checkPuzzleSolved (fullList, foundWordsList, instructionsId) {
+	function checkPuzzleSolved(fullList, foundWordsList, instructionsId) {
 
 		//if all the words in the list to find have been found (no. of words to find == no. of found words)
 		if ($(fullList).length == $(foundWordsList).length) {
 
 			//if user solved the puzzle themselves
 			if (selfSolved) {
-				
+
 
 				checkObjective();
 
@@ -572,13 +573,13 @@ function WordSearchView(matrix, list, gameId, listId, instructionsId) {
 				//updates h2 text
 				$(instructionsId).text("We solved it for you! :~)");
 
-			}	
+			}
 
 			return true;
 
- 		}
+		}
 
- 		return false;
+		return false;
 
 	}
 

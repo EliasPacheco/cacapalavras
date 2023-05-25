@@ -30,6 +30,13 @@
 			<button type="button" id="newGameButton" onclick="closeiPopup()">Jogar Novamente</button>
 		</div>
 	</div>
+	<div class="sm:static md:static lg:static xl:static 2xl:static">
+		<div class="popup3" id="popup3">
+			<h3>Caça Palavras!</h3>
+			<p>Seja bem vindo(a) ao nosso caça palavras. Você terá 15 minutos para achar todas as palavras. Para começar clique no botão abaixo</p>
+			<button type="button" id="newGameButton3" onclick="close3Popup()">Começar</button>
+		</div>
+	</div>
 	<div
 		class="flex flex-wrap lg:gap-x-[60px] lg:flex-row px-[50px] gap-y-[40px] w-full justify-center items-center p-20">
 		<div id="wordboard" class="h-64 sm:h-auto"></div>
@@ -106,6 +113,32 @@
 			}, 1000);
 
 		}
+		function close3Popup() {
+			popup3.classList.remove("open-popup3");
+			clearInterval(countdownInterval);
+			countdownDiv.innerHTML = "Tempo restante: 15:00";
+			countdownTime = 900;
+			countdownInterval = setInterval(function () {
+				var minutes = Math.floor(countdownTime / 60);
+				var seconds = countdownTime % 60;
+				countdownDiv.innerHTML = "Tempo restante: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+				countdownTime--;
+				if (countdownTime < 0) {
+					clearInterval(countdownInterval);
+					countdownDiv.innerHTML = "<span style='color: red; font-family: Arial;'>Tempo Esgotado! Palavras Encontradas: " + wordCountElement.innerHTML + "</span>";
+					popup2.classList.add("open-popup2");
+				}
+			}, 1000);
+
+
+		}
+		window.onload = () => {
+			open3Popup()
+		}
+		function open3Popup() {
+			popup3.classList.add("open-popup3");
+			clearInterval(countdownInterval);
+		}
 		function openPopup() {
 			popup.classList.add("open-popup");
 		}
@@ -125,7 +158,7 @@
 		}
 
 		$(document).ready(function () {
-			new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#newGameButton2", "#instructions",
+			new WordSearchController("#wordboard", "#wordlist", "#solveButton", "#newGameButton", "#newGameButton2","#newGameButton3", "#instructions",
 				"#wordTheme");
 		})
 	</script>

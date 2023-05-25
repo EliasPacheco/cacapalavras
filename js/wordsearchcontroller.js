@@ -9,12 +9,13 @@
  * @param {String} listId ID of the div where the list of words to find goes
  * @param {String} solveId ID for button to solve the puzzle
  * @param {String} newGameId ID for button to start a new game
- * @param {String} newGameId2 ID for button to start a new game
+ * @param {String} newGameId2 ID for button to start a new 
+ * @param {String} newGameId3 ID for button to start a new game
  * @param {String} instructionsId ID for the h2 heading (to allow us to update it's text with ease)
  * @param {String} themeId ID for part of the h3 heading (to show the theme of the word search)
  */
 
-function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, instructionsId, themeId) {
+function WordSearchController(gameId, listId, solveId, newGameId,newGameId2,newGameId3, instructionsId, themeId) {
 
 	//an object containing various themes/words for the game
 	var searchTypes = {
@@ -163,6 +164,17 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2, ins
 
 	})
 	$(newGameId2).click(function() {
+
+		//empties the game and list elements, as well as the h3 theme span element
+		$(gameId).empty();
+		$(listId).empty();
+		$(themeId).empty();
+
+		//calls the set up to create a new word search game
+		setUpWordSearch();
+
+	})
+	$(newGameId3).click(function() {
 
 		//empties the game and list elements, as well as the h3 theme span element
 		$(gameId).empty();
