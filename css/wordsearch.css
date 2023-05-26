@@ -37,6 +37,7 @@ h1, h2 {
 
 body {
 	background-color: #EAF7FB;
+	height: 100vh;
 }
 
 #wordTheme {
