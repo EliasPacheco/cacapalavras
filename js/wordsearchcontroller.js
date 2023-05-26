@@ -36,7 +36,7 @@ function WordSearchController(gameId, listId, solveId, newGameId,newGameId2,newG
 		 	["auditoria", "padroes", "diretrizes", "requisitos"],
 		 	["monitoramento", "avaliacao", "riscos", "certificacoes"],
 		 	["conformidade", "regulatoria", "etica", "seguranca"],
-		 	["documentacao", "responsabilidade", "corporativa", "acordo"]],
+		 	["documentacao", "regras", "corporativa", "acordo"]],
 
 		"ISO 27001": [["seguranca", "informacao", "norma", "certificacao"],
 		 	["controles", "riscos", "analise", "politica"],
