@@ -133,30 +133,7 @@ body {
 	
 }
 
-#solveButton, #newGameButton {
-
-	background-color: rgb(25, 0, 255);
-	margin: 20px auto 20px auto;
-	display: block;
-	outline: 0;
-	border-radius: 15px;
-	font-size: 18px;
-	font-weight: bold;
-
-}
-#newGameButton2 {
-
-	background-color: rgb(25, 0, 255);
-	margin: 20px auto 20px auto;
-	display: block;
-	outline: 0;
-	border-radius: 15px;
-	font-size: 18px;
-	font-weight: bold;
-
-}
-
-#newGameButton3 {
+#solveButton, #newGameButton,#newGameButton2, #newGameButton3 {
 
 	background-color: rgb(25, 0, 255);
 	margin: 20px auto 20px auto;
